@@ -3,12 +3,9 @@ package com.ikaihuo.api.idc;
 import java.util.List;
 import java.util.Map;
 
-import com.ikaihuo.galaxy.rpc.api.Export;
-
 /**
  * @author BruceZCQ
  */
-@Export
 public interface IDC {
 
     /**

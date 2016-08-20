@@ -29,18 +29,6 @@
 			<version>2.0.8</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-			<version>4.2.4.RELEASE</version>
-			<scope>provided</scope>
-		</dependency>
-	    <dependency>
-	        <groupId>com.ikaihuo</groupId>
-	        <artifactId>galaxy</artifactId>
-	        <version>0.0.19</version>
-	        <scope>provided</scope>
-	    </dependency>
 	</dependencies>
 	<build>
 		<plugins>

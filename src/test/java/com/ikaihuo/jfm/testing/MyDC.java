@@ -1,13 +1,10 @@
 package com.ikaihuo.jfm.testing;
 
-import org.springframework.stereotype.Component;
-
 import com.ikaihuo.api.dc.DC;
 
 /**
  * @author BruceZCQ
  */
-@Component
 public class MyDC extends DC {
 
     public MyDC() {

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.ikaihuo.api.idc.IDC;
 import com.ikaihuo.idc.kits.Consts;
 import com.jfinal.plugin.activerecord.Model;
@@ -16,7 +14,6 @@ import com.jfinal.plugin.activerecord.Model.QueryOut;
  */
 public abstract class DC {
 
-    @Autowired
     protected IDC    idc;
 
     private SqlLogDC sqlLog = new SqlLogDC();
