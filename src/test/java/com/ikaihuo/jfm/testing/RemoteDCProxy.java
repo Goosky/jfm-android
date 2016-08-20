@@ -8,10 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.ikaihuo.gp.storage.dc.api.idc.IDC;
-import com.ikaihuo.gp.storage.dc.api.idc.kits.Consts;
-import com.ikaihuo.gp.storage.dc.api.idc.kits.SqlKit;
-import com.ikaihuo.gp.storage.dc.api.idc.kits.SqlKit.Sql;
+import com.ikaihuo.api.idc.IDC;
+import com.ikaihuo.idc.kits.Consts;
+import com.ikaihuo.idc.kits.SqlKit;
+import com.ikaihuo.idc.kits.SqlKit.Sql;
 
 /**
  * @author BruceZCQ

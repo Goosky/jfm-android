@@ -1,4 +1,4 @@
-package com.ikaihuo.gp.storage.dc.api.dc;
+package com.ikaihuo.api.dc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.ikaihuo.gp.storage.dc.api.idc.IDC;
-import com.ikaihuo.gp.storage.dc.api.idc.kits.Consts;
+import com.ikaihuo.api.idc.IDC;
+import com.ikaihuo.idc.kits.Consts;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Model.QueryOut;
 

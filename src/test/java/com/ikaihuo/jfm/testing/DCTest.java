@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.ikaihuo.gp.storage.dc.api.idc.kits.Consts;
+import com.ikaihuo.idc.kits.Consts;
 import com.ikaihuo.monkey.model.Profile;
 import com.ikaihuo.monkey.model.User;
 import com.jfinal.kit.JsonKit;

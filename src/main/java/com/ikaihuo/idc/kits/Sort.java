@@ -1,4 +1,4 @@
-package com.ikaihuo.gp.storage.dc.api.idc.kits;
+package com.ikaihuo.idc.kits;
 
 /**
  * Sort.DESC(column) <br/>

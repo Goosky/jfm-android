@@ -2,7 +2,7 @@ package com.ikaihuo.jfm.testing;
 
 import org.springframework.stereotype.Component;
 
-import com.ikaihuo.gp.storage.dc.api.dc.DC;
+import com.ikaihuo.api.dc.DC;
 
 /**
  * @author BruceZCQ

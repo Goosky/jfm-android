@@ -1,4 +1,4 @@
-package com.ikaihuo.gp.storage.dc.api.idc;
+package com.ikaihuo.api.idc;
 
 import java.util.List;
 import java.util.Map;

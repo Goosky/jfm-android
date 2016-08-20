@@ -1,4 +1,4 @@
-package com.ikaihuo.gp.storage.dc.api.idc.kits;
+package com.ikaihuo.idc.kits;
 
 import java.util.ArrayList;
 import java.util.Arrays;

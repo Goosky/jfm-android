@@ -25,8 +25,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.ikaihuo.gp.storage.dc.api.dc.DC;
-import com.ikaihuo.gp.storage.dc.api.idc.kits.Consts;
+import com.ikaihuo.api.dc.DC;
+import com.ikaihuo.idc.kits.Consts;
 
 /**
  * Model.
