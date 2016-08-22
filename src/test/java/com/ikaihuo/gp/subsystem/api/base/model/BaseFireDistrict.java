@@ -11,6 +11,12 @@ public abstract class BaseFireDistrict<M extends BaseFireDistrict<M>> extends Mo
 
 	public static final String table = "fire_district";
 
+	protected BaseFireDistrict() {
+		set(TABLE_KEY, BaseFireDistrict.table);
+	}
+
+	public static final String ID = "id";
+
 	public void setId(java.lang.Long id) {
 		set("id", id);
 	}
@@ -18,6 +24,8 @@ public abstract class BaseFireDistrict<M extends BaseFireDistrict<M>> extends Mo
 	public java.lang.Long getId() {
 		return get("id");
 	}
+
+	public static final String CREATE_DATE = "create_date";
 
 	public void setCreateDate(java.util.Date createDate) {
 		set("create_date", createDate);
@@ -27,6 +35,8 @@ public abstract class BaseFireDistrict<M extends BaseFireDistrict<M>> extends Mo
 		return get("create_date");
 	}
 
+	public static final String MODIFY_DATE = "modify_date";
+
 	public void setModifyDate(java.util.Date modifyDate) {
 		set("modify_date", modifyDate);
 	}
@@ -34,6 +44,8 @@ public abstract class BaseFireDistrict<M extends BaseFireDistrict<M>> extends Mo
 	public java.util.Date getModifyDate() {
 		return get("modify_date");
 	}
+
+	public static final String SORT_SEQ = "sort_seq";
 
 	public void setSortSeq(java.lang.Integer sortSeq) {
 		set("sort_seq", sortSeq);
@@ -43,6 +55,8 @@ public abstract class BaseFireDistrict<M extends BaseFireDistrict<M>> extends Mo
 		return get("sort_seq");
 	}
 
+	public static final String DESCRIPTION = "description";
+
 	public void setDescription(java.lang.String description) {
 		set("description", description);
 	}
@@ -50,6 +64,8 @@ public abstract class BaseFireDistrict<M extends BaseFireDistrict<M>> extends Mo
 	public java.lang.String getDescription() {
 		return get("description");
 	}
+
+	public static final String ICON_IMAGE = "icon_image";
 
 	public void setIconImage(java.lang.String iconImage) {
 		set("icon_image", iconImage);
@@ -59,6 +75,8 @@ public abstract class BaseFireDistrict<M extends BaseFireDistrict<M>> extends Mo
 		return get("icon_image");
 	}
 
+	public static final String IN_USE = "in_use";
+
 	public void setInUse(java.lang.Boolean inUse) {
 		set("in_use", inUse);
 	}
@@ -66,6 +84,8 @@ public abstract class BaseFireDistrict<M extends BaseFireDistrict<M>> extends Mo
 	public java.lang.Boolean getInUse() {
 		return get("in_use");
 	}
+
+	public static final String NAME = "name";
 
 	public void setName(java.lang.String name) {
 		set("name", name);

@@ -11,6 +11,10 @@ public abstract class BaseFireCity<M extends BaseFireCity<M>> extends Model<M> i
 
 	public static final String table = "fire_city";
 
+	protected BaseFireCity() {
+		set(TABLE_KEY, BaseFireCity.table);
+	}
+
 	public static final String ID = "id";
 
 	public void setId(java.lang.Long id) {
