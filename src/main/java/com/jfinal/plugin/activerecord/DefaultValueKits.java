@@ -1,5 +1,7 @@
 package com.jfinal.plugin.activerecord;
 
+import java.util.UUID;
+
 /**
  * @author BruceZCQ
  */
@@ -8,30 +10,33 @@ public class DefaultValueKits {
 	private DefaultValueKits() {}
 
 	@SuppressWarnings("unchecked")
+	//TODO unsupported Boolean 
 	public static <T> T getDefaultValue(T t) {
+		if (t instanceof Boolean) {
+			throw new IllegalArgumentException("DefaultValueKits unsupported Boolean ");
+		}
 		T _t = (T) new Object();
+		int hashCode = UUID.randomUUID().hashCode();
 		if (t instanceof String) {
-			_t = (T) new String(); 
+			_t = (T) new String(hashCode+""); 
 		} else if (t instanceof java.math.BigInteger) {
-			_t = (T) new java.math.BigInteger("0");
+			_t = (T) new java.math.BigInteger(hashCode+"");
 		} else if (t instanceof java.util.Date){
-			_t = (T) new java.util.Date();
+			_t = (T) new java.util.Date(hashCode);
 		} else if (t instanceof byte[]) {
-			_t = (T) new byte[0];
+			_t = (T) new byte[]{(byte)hashCode};
 		} else if (t instanceof Integer) {
-			_t = (T) new Integer(0);
+			_t = (T) new Integer(hashCode);
 		} else if (t instanceof Long) {
-			_t = (T) new Long(0);
+			_t = (T) new Long(hashCode);
 		} else if (t instanceof Float) {
-			_t = (T) new Float(0.0);
+			_t = (T) new Float(hashCode);
 		} else if (t instanceof Double) {
-			_t = (T) new Double(0.0);
-		} else if (t instanceof Boolean) {
-			_t = (T) new Boolean(true);
+			_t = (T) new Double(hashCode);
 		} else if (t instanceof java.math.BigDecimal) {
-			_t = (T) new java.math.BigDecimal("");
+			_t = (T) new java.math.BigDecimal(hashCode);
 		} else if (t instanceof Number) {
-			_t = (T) new Integer(0);
+			_t = (T) new Integer(hashCode);
 		}
 		return _t;
 	}

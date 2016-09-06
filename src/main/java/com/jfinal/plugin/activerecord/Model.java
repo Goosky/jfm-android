@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import com.ikaihuo.api.dc.DC;
 import com.ikaihuo.idc.kits.Consts;
@@ -408,13 +409,15 @@ public abstract class Model<M extends Model> implements Serializable {
     	Object attrVal = value;
     	Match match = null;
     	//query logic
-    	if (Match.matches.containsKey(value)) {
-    		match = Match.matches.get(value);
+    	if (Match.matches.containsKey(value.hashCode())) {
+    		match = Match.matches.get(value.hashCode());
     		attrVal = match.vals[0];
     		if (match.isAndOr()) {
     			this.sqlOpsAttrs.put(attr, match.ops);
     			match.ops = Model.EQ;
 			}
+    		//remove mq
+    		Match.matches.remove(value.hashCode());
 		} else {
 			match = new Match(value, Model.EQ, value);
 		}
@@ -460,7 +463,8 @@ public abstract class Model<M extends Model> implements Serializable {
      * @param orders
      */
     public M setOrders(String... orders) {
-    	this.set(Consts.ORDER_KEY, orders);
+    	this.attrs.put(Consts.ORDER_KEY, orders);
+		this.sqlAttrs.put(Consts.ORDER_KEY, orders);
     	return (M) this;
     }
     
@@ -538,7 +542,7 @@ public abstract class Model<M extends Model> implements Serializable {
     	private String ops = "";
     	private Object[] vals = null;
     	
-    	private static Map<Object, Match> matches = new HashMap<Object, Match>();
+    	private static Map<Integer, Match> matches = new ConcurrentHashMap<Integer, Match>();
     	
     	private Match(Object mq, String ops, Object... vals) {
     		this.mq = mq;
@@ -576,19 +580,12 @@ public abstract class Model<M extends Model> implements Serializable {
     		return sbr.toString();
 		}
     	
-    	public static Match getQuery(Object mq) {
-    		if (!Match.matches.containsKey(mq)) {
-				throw (new IllegalArgumentException("Match IllegalArgumentException Not Found mq"+mq));
-			}
-    		return Match.matches.get(mq);
-    	}
-    	
     	/**
     	 * column = 'value'
     	 */
     	public static <T> T EQ(T value) {
     		T mq = Match.getMq(value);
-    		Match.matches.put(mq, new Match(mq, Model.EQ, value));
+    		Match.matches.put(mq.hashCode(), new Match(mq, Model.EQ, value));
     		return mq;
     	}
     	
@@ -597,7 +594,7 @@ public abstract class Model<M extends Model> implements Serializable {
     	 */
     	public static <T> T NEQ(T value) {
     		T mq = Match.getMq(value);
-    		Match.matches.put(mq, new Match(mq, Model.NEQ, value));
+    		Match.matches.put(mq.hashCode(), new Match(mq, Model.NEQ, value));
     		return mq;
     	}
     	
@@ -606,7 +603,7 @@ public abstract class Model<M extends Model> implements Serializable {
     	 */
     	public static <T> T LIKE(T value) {
     		T mq = Match.getMq(value);
-    		Match.matches.put(mq, new Match(mq, Model.LIKE, value));
+    		Match.matches.put(mq.hashCode(), new Match(mq, Model.LIKE, value));
     		return mq;
     	}
     	
@@ -615,7 +612,7 @@ public abstract class Model<M extends Model> implements Serializable {
     	 */
     	public static <T> T GE(T value) {
     		T mq = Match.getMq(value);
-    		Match.matches.put(mq, new Match(mq, Model.GE, value));
+    		Match.matches.put(mq.hashCode(), new Match(mq, Model.GE, value));
     		return mq;
     	}
     	
@@ -624,7 +621,7 @@ public abstract class Model<M extends Model> implements Serializable {
     	 */
     	public static <T> T GT(T value) {
     		T mq = Match.getMq(value);
-    		Match.matches.put(mq, new Match(mq, Model.GT, value));
+    		Match.matches.put(mq.hashCode(), new Match(mq, Model.GT, value));
     		return mq;
     	}
     	
@@ -633,7 +630,7 @@ public abstract class Model<M extends Model> implements Serializable {
     	 */
     	public static <T> T LE(T value) {
     		T mq = Match.getMq(value);
-    		Match.matches.put(mq, new Match(mq, Model.LE, value));
+    		Match.matches.put(mq.hashCode(), new Match(mq, Model.LE, value));
     		return mq;
     	}
     	
@@ -642,7 +639,7 @@ public abstract class Model<M extends Model> implements Serializable {
     	 */
     	public static <T> T LT(T value) {
     		T mq = Match.getMq(value);
-    		Match.matches.put(mq, new Match(mq, Model.LT, value));
+    		Match.matches.put(mq.hashCode(), new Match(mq, Model.LT, value));
     		return mq;
     	}
     	
@@ -651,7 +648,7 @@ public abstract class Model<M extends Model> implements Serializable {
     	 */
     	public static <T> T AND(T value) {
     		T mq = Match.getMq(value);
-    		Match.matches.put(mq, new Match(mq, Model.AND, value));
+    		Match.matches.put(mq.hashCode(), new Match(mq, Model.AND, value));
     		return mq;
     	}
 
@@ -660,7 +657,7 @@ public abstract class Model<M extends Model> implements Serializable {
     	 */
     	public static <T> T OR(T value) {
     		T mq = Match.getMq(value);
-    		Match.matches.put(mq, new Match(mq, Model.OR, value));
+    		Match.matches.put(mq.hashCode(), new Match(mq, Model.OR, value));
     		return mq;
     	}
     	
@@ -669,7 +666,7 @@ public abstract class Model<M extends Model> implements Serializable {
     	 */
     	public static <T> T BW(T start, T end) {
     		T mq = Match.getMq(start);
-    		Match.matches.put(mq, new Match(mq, Model.BETWEEN, start, end));
+    		Match.matches.put(mq.hashCode(), new Match(mq, Model.BETWEEN, start, end));
     		return mq;
     	}
     }

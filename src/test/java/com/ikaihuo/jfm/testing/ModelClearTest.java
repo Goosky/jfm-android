@@ -2,21 +2,30 @@ package com.ikaihuo.jfm.testing;
 
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.ikaihuo.gp.subsystem.api.model.FireCity;
+import com.jfinal.plugin.activerecord.DefaultValueKits;
 
 public class ModelClearTest {
 
+	private static Map<Object, Object> matches = new HashMap<Object, Object>();
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
 
 	@Before
 	public void setUp() throws Exception {
+	}
+	
+	public void bool(boolean boo) {
+		System.out.println("boo ==="+boo);
 	}
 
 	@Test
@@ -36,6 +45,16 @@ public class ModelClearTest {
 		System.out.println("old=>\n"+city+"\ncleared=>\n"+cccity);
 		
 		System.out.println(new Date());
+		
+		
+		Object a = new Object();
+
+		for (int i = 0; i < 100; i++) {
+			Object val = DefaultValueKits.getDefaultValue(a);
+			System.out.println("val==="+val.hashCode());
+			matches.put(val.hashCode(), val.toString()+i);
+			System.out.println(matches.size());
+		}
 	}
 
 }
