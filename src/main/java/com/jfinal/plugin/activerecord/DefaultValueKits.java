@@ -18,9 +18,9 @@ public class DefaultValueKits {
 		T _t = (T) new Object();
 		int hashCode = UUID.randomUUID().hashCode();
 		if (t instanceof String) {
-			_t = (T) new String(hashCode+""); 
+			_t = (T) new String(String.valueOf(hashCode)); 
 		} else if (t instanceof java.math.BigInteger) {
-			_t = (T) new java.math.BigInteger(hashCode+"");
+			_t = (T) new java.math.BigInteger(String.valueOf(hashCode));
 		} else if (t instanceof java.util.Date){
 			_t = (T) new java.util.Date(hashCode);
 		} else if (t instanceof byte[]) {

@@ -47,7 +47,7 @@ public class ModelClearTest {
 		System.out.println(new Date());
 		
 		
-		Object a = new Object();
+		Object a = "";
 
 		for (int i = 0; i < 100; i++) {
 			Object val = DefaultValueKits.getDefaultValue(a);
