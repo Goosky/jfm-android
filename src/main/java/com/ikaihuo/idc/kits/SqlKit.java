@@ -44,6 +44,18 @@ public class SqlKit {
         	this.params = paramlst.toArray();
         	return this;
         }
+        
+        public Sql orderBy(String... orders) {
+        	StringBuilder sbr = new StringBuilder(this.sql);
+        	sbr.append(" ORDER BY ");
+        	String suffix = ", ";
+        	for (String column : orders) {
+				sbr.append(column).append(suffix);
+			}
+        	sbr.delete(sbr.length() - suffix.length(), sbr.length());
+        	this.sql = sbr.toString();
+        	return this;
+        }
 
         @Override
         public String toString() {
@@ -97,7 +109,7 @@ public class SqlKit {
         
         Map<?, ?> map = SqlKit.cloneMap(data);
         Map<String, Object> params = (Map<String, Object>) map.get(Consts.PARAMS_KEY);
-        if (params.size() == 0) {
+        if (null == params || params.size() == 0) {
             return (new Sql());
 		}
         
@@ -144,7 +156,7 @@ public class SqlKit {
 
         Map<?, ?> map = SqlKit.cloneMap(data); 
         Map<String, Object> params = (Map<String, Object>) map.get(Consts.PARAMS_KEY);
-        if (params.size() == 0) {
+        if (null == params || params.size() == 0) {
             return (new Sql());
 		}
         
@@ -189,7 +201,7 @@ public class SqlKit {
 
         Map<?, ?> map = SqlKit.cloneMap(data);
         Map<String, Object> params = (Map<String, Object>) map.get(Consts.PARAMS_KEY);
-        if (params.size() == 0) {
+        if (null == params || params.size() == 0) {
             return (new Sql());
 		}
         
@@ -232,7 +244,7 @@ public class SqlKit {
 
         Map<?, ?> map = SqlKit.cloneMap(data);
         Map<String, Object> params = (Map<String, Object>) map.get(Consts.PARAMS_KEY);
-        if (params.size() == 0) {
+        if (null == params || params.size() == 0) {
             return (new Sql());
 		}
         

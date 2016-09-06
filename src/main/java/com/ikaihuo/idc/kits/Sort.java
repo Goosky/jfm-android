@@ -1,5 +1,6 @@
 package com.ikaihuo.idc.kits;
 
+
 /**
  * Sort.DESC(column) <br/>
  * Sort.ASC(column)  <br/>
@@ -9,8 +10,8 @@ public class Sort {
 
 	private Sort() {}
 	
-	private static final String DESC = "+";
-	private static final String ASC = "-";
+	private static final String DESC = " DESC ";
+	private static final String ASC = " ASC ";
 	
 	public static String DESC(String column) {
 		return (column + Sort.DESC);
