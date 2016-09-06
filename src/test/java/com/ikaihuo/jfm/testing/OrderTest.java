@@ -27,12 +27,13 @@ public class OrderTest {
 		
 		System.out.println(order);
 		
-		String[] orders = order.split("ASC");
+		String[] orders = order.split(Consts.ORDER_ASC);
 		String column = "";
 		if (orders.length == 2) {
 			column = orders[0].trim();
 		}
 		System.out.println(column);
+		System.out.println("this column prepare for cache");
 	}
 
 }

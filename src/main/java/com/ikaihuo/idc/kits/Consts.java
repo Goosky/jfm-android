@@ -18,4 +18,6 @@ public abstract class Consts {
 	public static final String QUERY_DATA_COUNT = "__data_cnt__";
 	public static final String QUERY_DATA = "__data__";
 	public static final String ORDER_KEY = "__order__";
+	public static final String ORDER_ASC = " ASC ";
+	public static final String ORDER_DESC = " DESC ";
 }

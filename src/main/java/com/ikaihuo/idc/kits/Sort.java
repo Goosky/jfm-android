@@ -10,14 +10,11 @@ public class Sort {
 
 	private Sort() {}
 	
-	private static final String DESC = " DESC ";
-	private static final String ASC = " ASC ";
-	
 	public static String DESC(String column) {
-		return (column + Sort.DESC);
+		return (column + Consts.ORDER_DESC);
 	}
 	
 	public static String ASC(String column) {
-		return (column + Sort.ASC);
+		return (column + Consts.ORDER_ASC);
 	}
 }
